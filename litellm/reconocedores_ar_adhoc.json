@@ -1,0 +1,124 @@
+[
+  {
+    "name": "CuitRecognizer",
+    "supported_language": "es",
+    "supported_entity": "AR_CUIT",
+    "patterns": [
+      {
+        "name": "CUIT",
+        "regex": "\\b(?:20|23|24|25|26|27|30|33|34)[-.\\s]?\\d{8}[-.\\s]?\\d\\b",
+        "score": 0.5
+      }
+    ],
+    "context": [
+      "cuit",
+      "cuil",
+      "cdi",
+      "afip",
+      "arca",
+      "factura",
+      "monotributo"
+    ]
+  },
+  {
+    "name": "CbuRecognizer",
+    "supported_language": "es",
+    "supported_entity": "AR_CBU",
+    "patterns": [
+      {
+        "name": "CBU/CVU",
+        "regex": "\\b\\d(?:[\\s-]?\\d){21}\\b",
+        "score": 0.5
+      }
+    ],
+    "context": [
+      "cbu",
+      "cvu",
+      "cuenta",
+      "transferencia",
+      "transferir",
+      "banco"
+    ]
+  },
+  {
+    "name": "PhoneArRecognizer",
+    "supported_language": "es",
+    "supported_entity": "AR_PHONE",
+    "patterns": [
+      {
+        "name": "Teléfono con +54",
+        "regex": "(?:\\+|\\b)54[\\s-]?9?[\\s-]?\\(?0?\\d{2,4}\\)?[\\s-]?(?:15[\\s-]?)?\\d{3,4}[\\s-]?\\d{4}\\b",
+        "score": 0.85
+      },
+      {
+        "name": "Teléfono local",
+        "regex": "(?<![\\d.,$])\\(?\\b0?(?:11|[2-9]\\d{1,3})\\)?[\\s-](?:15[\\s-]?)?\\d{3,4}[\\s-]\\d{4}\\b",
+        "score": 0.5
+      }
+    ],
+    "context": [
+      "tel",
+      "teléfono",
+      "telefono",
+      "cel",
+      "celular",
+      "whatsapp",
+      "wsp",
+      "llamar",
+      "contacto"
+    ]
+  },
+  {
+    "name": "MercadoPagoTokenRecognizer",
+    "supported_language": "es",
+    "supported_entity": "MERCADOPAGO_TOKEN",
+    "patterns": [
+      {
+        "name": "Access token",
+        "regex": "\\b(?:APP_USR|TEST)-\\d{10,20}-\\d{6}-[a-f0-9]{32}-\\d{6,12}\\b",
+        "score": 0.99
+      }
+    ],
+    "context": []
+  },
+  {
+    "name": "DniRecognizer",
+    "supported_language": "es",
+    "supported_entity": "AR_DNI",
+    "patterns": [
+      {
+        "name": "DNI con puntos",
+        "regex": "(?<![\\d.,$])\\b\\d{1,2}\\.\\d{3}\\.\\d{3}\\b(?![.,]\\d)",
+        "score": 0.5
+      },
+      {
+        "name": "DNI sin puntos",
+        "regex": "(?<![\\d.,$])\\b\\d{7,8}\\b(?![.,]\\d)",
+        "score": 0.1
+      }
+    ],
+    "context": [
+      "dni",
+      "documento",
+      "doc"
+    ]
+  },
+  {
+    "name": "LicensePlateArRecognizer",
+    "supported_language": "es",
+    "supported_entity": "AR_LICENSE_PLATE",
+    "patterns": [
+      {
+        "name": "Patente Mercosur",
+        "regex": "\\b[A-Z]{2}\\s?\\d{3}\\s?[A-Z]{2}\\b",
+        "score": 0.6
+      }
+    ],
+    "context": [
+      "patente",
+      "dominio",
+      "auto",
+      "vehiculo"
+    ]
+  }
+]

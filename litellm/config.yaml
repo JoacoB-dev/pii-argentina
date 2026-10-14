@@ -1,0 +1,22 @@
+# Ejemplo de LiteLLM Proxy con el guardrail de Presidio y los reconocedores argentinos.
+# Requiere presidio-analyzer y presidio-anonymizer corriendo (ver README).
+model_list:
+  - model_name: gpt-4o-mini
+    litellm_params:
+      model: openai/gpt-4o-mini
+      api_key: os.environ/OPENAI_API_KEY
+
+guardrails:
+  - guardrail_name: "datos-argentinos"
+    litellm_params:
+      guardrail: presidio
+      mode: "pre_call"
+      presidio_language: "es"
+      presidio_ad_hoc_recognizers: "./reconocedores_ar_adhoc.json"
+      pii_entities_config:
+        AR_CUIT: "MASK"
+        AR_CBU: "MASK"
+        AR_DNI: "MASK"
+        AR_PHONE: "MASK"
+        AR_LICENSE_PLATE: "MASK"
+        MERCADOPAGO_TOKEN: "BLOCK"

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "presidio-argentina"
+version = "0.1.0"
+description = "Reconocedores de Microsoft Presidio para datos argentinos: CUIT/CUIL, CBU/CVU, DNI, alias, teléfonos, patentes y tokens de Mercado Pago."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Joaquin Alejandro Bobbio" }]
+requires-python = ">=3.9"
+dependencies = ["presidio-analyzer>=2.2"]
+keywords = ["presidio", "pii", "argentina", "cuit", "cbu", "dni", "anonymization"]
+
+[project.optional-dependencies]
+test = ["pytest", "presidio-anonymizer"]
+
+[tool.setuptools]
+packages = ["presidio_argentina"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
